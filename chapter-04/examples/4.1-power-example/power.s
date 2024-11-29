@@ -67,7 +67,6 @@ power_loop_start:
     movl -4(%ebp), %eax #move the current result into %eax
     imull %ebx, %eax    #multiply the current result by
                         #the base number
-    movl %eax, -4(%ebp) #store the current result
     decl %ecx           #decrease the power
     jmp power_loop_start #run for the next power
 
