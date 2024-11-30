@@ -1,15 +1,10 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-    echo "Usage: $0 <input_file>"
-    exit 1
-fi
+as square.s -o square.o --32
+as main.s -o main.o --32
+ld -o main main.o square.o -m elf_i386
 
-input_file=$1
-
-as "$input_file.s" -o "$input_file.o" --32
-ld "$input_file.o" -o "$input_file" -m elf_i386
-
-./"$input_file"
+./main
 
 echo $?
+
